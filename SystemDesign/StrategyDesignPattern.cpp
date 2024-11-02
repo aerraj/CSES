@@ -70,9 +70,9 @@ public:
     SportyVehicle() : Vehicle(new SportsDriveStrategy()) {}
 };
 
-class Car : public Vehicle {
+class SuperCar : public Vehicle {
 public:
-    Car() : Vehicle({new SportsDriveStrategy(), new NormalDriveStrategy(), new UtilityDriveStrategy()}) {}
+    SuperCar() : Vehicle({new SportsDriveStrategy(), new NormalDriveStrategy(), new UtilityDriveStrategy()}) {}
 };
 
 class RacingVehicle : public Vehicle {
@@ -110,9 +110,11 @@ int main() {
     ferrari->drive();          // Output: Driving in Sports Mode.
 
     // Create a Car object and use drivemode method
-    Vehicle* car = new Car();
+    Vehicle* car = new SuperCar();
     cout << "This Vehicle has various modes in which it drives:" << endl;
     car->drivemode(); // Call drivemode to see all modes
+
+    // we can use combination of drive strategy like car has all 3
 
     // Clean up
     delete ferrari;
