@@ -20,7 +20,7 @@ public:
 class SportsDriveStrategy : public DriveStrategy {
 public:
     void drive() override {
-        cout << "Sports drive capability." << endl;
+        cout << "Driving in Sports Mode." << endl;
     }
 };
 
@@ -54,10 +54,19 @@ class SportyVehicle : public Vehicle {
 public:
     SportyVehicle() : Vehicle(new SportsDriveStrategy()) {}
 };
+class RacingVehicle : public Vehicle {
+public:
+    RacingVehicle() : Vehicle(new SportsDriveStrategy()) {}
+};
+
 
 class PassengerVehicle : public Vehicle {
 public:
     PassengerVehicle() : Vehicle(new NormalDriveStrategy()) {}
+};
+class CityVehicle : public Vehicle {
+public:
+    CityVehicle() : Vehicle(new NormalDriveStrategy()) {}
 };
 
 class UtilityVehicle : public Vehicle {
@@ -71,13 +80,15 @@ int main() {
     Vehicle* sportyCar = new SportyVehicle();
     Vehicle* passengerCar = new PassengerVehicle();
     Vehicle* utilityTruck = new UtilityVehicle();
+    Vehicle* Ferrari=new RacingVehicle();
 
     // Drive each vehicle
     sportyCar->drive();        // Output: Sports drive capability.
     passengerCar->drive();     // Output: Driving in normal mode.
     utilityTruck->drive();     // Output: Driving in utility mode.
-
+    Ferrari->drive();
     // Clean up
+    delete Ferrari;
     delete sportyCar;
     delete passengerCar;
     delete utilityTruck;
